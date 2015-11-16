@@ -53,8 +53,33 @@ public class Passaro {
      * @param delta
      */
 
-    public void atualizar(float delta){
-        atualizarVelocidade();
+    public void atualizar(float delta, boolean movimentar){
+
+        if (movimentar) {
+            atualizarVelocidade();
+            atualizarRotacao();
+        }
+
+    }
+
+    private void atualizarRotacao() {
+        float velocidadeY = corpo.getLinearVelocity().y;
+        float rotacao = 0;
+        if (velocidadeY < 0) {
+            //caindo
+            rotacao = -15;
+
+        } else if (velocidadeY > 0) {
+            //subindo
+            rotacao = 10;
+
+        } else{
+            //reto
+            rotacao = 0;
+
+        }
+        rotacao =(float) Math.toRadians(rotacao);//convertendo graus para radiano
+        corpo.setTransform(corpo.getPosition(),rotacao);
     }
 
     private void atualizarVelocidade() {
