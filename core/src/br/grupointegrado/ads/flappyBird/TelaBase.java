@@ -10,6 +10,7 @@ public abstract class TelaBase implements Screen {
     protected MainGame game;
 
     public TelaBase(MainGame game){
+        this.game = game;
 
     }
 
